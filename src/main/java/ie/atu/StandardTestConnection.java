@@ -17,6 +17,15 @@ public class StandardTestConnection {
             System.out.println("Connection made to connection pool");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
+        } finally {
+            // Close the connection when finished
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
